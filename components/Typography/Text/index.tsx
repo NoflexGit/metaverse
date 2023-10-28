@@ -1,16 +1,35 @@
 'use client';
 
 import { FC, HTMLAttributes } from 'react';
+import cn from 'clsx';
 
 type TProps = HTMLAttributes<HTMLSpanElement> & {
   tag?: 'span' | 'p' | 'div';
-  size?: 'xs' | 'xm' | 'md' | 'lg' | 'xl';
-  weight?: 'regular' | 'semi-bold' | 'bold';
-  color?: 'primary' | 'secondary' | 'primary-inverted' | 'secondary-inverted';
+  size?: string;
+  weight?: string;
+  leading?: string;
+  color?: string;
   className?: string;
 };
-const Text: FC<TProps> = ({ className, tag: Component = 'span', children }) => {
-  return <Component className={className}>{children}</Component>;
+const Text: FC<TProps> = ({
+  className,
+  color = 'white',
+  size = 'base',
+  tag: Component = 'span',
+  leading = 'normal',
+  weight = 'normal',
+  children,
+}) => {
+  console.log(color);
+  const classNames = cn({
+    [`text-${color}`]: color,
+    [`text-${size}`]: size,
+    [`font-${weight}`]: weight,
+    [`leading-${leading}`]: leading,
+    className,
+  });
+
+  return <Component className={classNames}>{children}</Component>;
 };
 
 export default Text;

@@ -6,9 +6,6 @@ import { textVariant2, textContainer } from '@/utils/motion';
 
 type TProps = {
   tag?: 'motion.span' | 'motion.p' | 'motion.div';
-  size?: 'xs' | 'xm' | 'md' | 'lg' | 'xl';
-  weight?: 'regular' | 'semi-bold' | 'bold';
-  color?: 'primary' | 'secondary' | 'primary-inverted' | 'secondary-inverted';
   className?: string;
   text: string;
 };
